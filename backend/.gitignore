@@ -1,0 +1,9 @@
+.vs/
+bin/
+obj/
+packages/
+binaries/
+build/
+logs/
+temp/
+migrations/
