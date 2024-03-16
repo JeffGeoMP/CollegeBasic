@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace backend.Entities
+namespace backend.Data.Entities
 {
     public class Student
     {
@@ -22,13 +22,13 @@ namespace backend.Entities
         public string NameOfMother { get; set; }
 
         [Required]
-        public string Grade { get; set; }
+        public int Grade { get; set; }
 
         [Required]
         public string Section { get; set; }
 
         [Required]
-        public string DateofStart { get; set; }
+        public DateTime DateofStart { get; set; }
 
     }
 }
