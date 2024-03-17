@@ -16,13 +16,38 @@ class StudentComponent extends React.Component {
 	}
 
 	componentDidMount() {
-		Loading.pulse('Loading Students ...');
+		Loading.pulse('Loading Grades ...');
 		this.studentService.getGrade().then((response) => {
 			this.setState({ grades: response.data });
 			Loading.remove();
 		}).catch((error) => {
 			Loading.remove();
 			Report.failure('Error', error);
+		});
+	}
+
+	handleChangeSelectGrade = (event) => {
+		this.setState({ gradeSelected: event.target.value });
+	}
+
+	uploadStudents = () => {
+		const grade = this.state.gradeSelected;
+
+		console.log(grade);
+
+		if (grade == 0 ) {
+			Report.failure('Error', 'Please select a grade');
+			return;
+		}
+
+		Loading.pulse('Loading Students ...');
+		this.studentService.getStudents(grade).then((response) => {
+			this.setState({ students: response.data });
+			Loading.remove();
+		}).catch((error) => {
+			console.log(error);
+			Loading.remove();
+			Report.failure('Error', error.message);
 		});
 	}
 
@@ -34,19 +59,16 @@ class StudentComponent extends React.Component {
 
 				<div className="card mt-5 mb-3 p-3">
 					<div className="card-header">
-					<div className="d-flex justify-content-center">
-
-					</div>
 						<div className="row">
 							<div className="col-md-4 offset-md-4">
 								<div className="input-group">
-									<select className="form-select" id="inputSelected" aria-label="Example select with button addon">
+									<select className="form-select" id="inputSelected" onChange={this.handleChangeSelectGrade}>
 										<option defaultValue>Choose grade...</option>
 										{this.state.grades.map(grade =>
-											<option key={grade.grade} value={grade.grade}>{grade.gradeName}</option>
+											<option key={grade.grade} value={grade.grade}>{grade.grade}° - {grade.gradeName}</option>
 										)}
 									</select>
-									<button className="btn btn-outline-secondary" type="button">Buscar</button>
+									<button className="btn btn-outline-secondary" type="button" onClick={this.uploadStudents}>Buscar</button>
 								</div>
 							</div>
 						</div>
@@ -55,20 +77,28 @@ class StudentComponent extends React.Component {
 						<table className="table">
 							<thead>
 								<tr>
-									<th scope="col">Student ID</th>
-									<th scope="col">First Name</th>
-									<th scope="col">Last Name</th>
-									<th scope="col">Age</th>
+									<th scope="col">Name</th>
+									<th scope="col">Birth</th>
+									<th scope="col">Father Name</th>
+									<th scope="col">Mother Name</th>
+									<th scope="col">Grade</th>
+									<th scope="col">Section</th>
+									<th scope="col">Start Date</th>
 								</tr>
 							</thead>
 							<tbody>
 								{this.state.students.map(student =>
 									<tr key={student.id}>
-										<td>{student.firstName}</td>
-										<td>{student.lastName}</td>
-										<td>{student.age}</td>
+										<td>{student.name}</td>
+										<td>{student.dateOfBirth}</td>
+										<td>{student.nameOfFather}</td>
+										<td>{student.nameOfMother}</td>
+										<td>{student.grade}°</td>
+										<td>{student.section}</td>
+										<td>{student.dateOfStart}</td>
 									</tr>
 								)}
+								{this.state.students.length === 0 && <tr><td colSpan="7" className="text-center">No data found </td></tr>}
 							</tbody>
 						</table>
 					</div>
