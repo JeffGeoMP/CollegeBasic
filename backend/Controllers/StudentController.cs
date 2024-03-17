@@ -23,7 +23,11 @@ namespace backend.Controllers
             _validator = validator;
         }
 
-
+        /// <summary>
+        /// Services for getting all students
+        /// </summary>
+        /// <param name="grade"></param>
+        /// <returns></returns>
         [HttpGet]
         [Route("api/get/{grade}")]
         public async Task<IActionResult> GetStudent(int grade)
@@ -43,6 +47,25 @@ namespace backend.Controllers
             return Ok(student);
         }
 
+        /// <summary>
+        /// Services for getting all grades
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("api/get/grade")]
+        public async Task<IActionResult> GetGrade()
+        {
+            var grade = await _context.Students.Select(x => x.Grade).Distinct().ToListAsync();
+            if(grade == null)
+                return NoContent();
+            return Ok(grade);
+        }
+
+        /// <summary>
+        /// Services for adding a student
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("api/add")]
         public async Task<IActionResult> AddStudent([FromBody] StudentPostModel model)

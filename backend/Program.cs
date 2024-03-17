@@ -27,6 +27,14 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors((policy) =>
+{
+    policy.AllowAnyHeader()
+    .AllowAnyMethod()
+    .SetIsOriginAllowed((origin) => true)
+    .AllowAnyOrigin();
+});
+
 app.UseMiddleware<BasicAuthHandler>("RES");
 
 app.UseHttpsRedirection();
