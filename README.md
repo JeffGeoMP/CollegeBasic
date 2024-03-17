@@ -36,14 +36,14 @@ _Desarrollar una interfaz Front-End básica en Angular o React, para CSS utiliza
 ### Instalación 🔧
 
 - Descargar o Clonar el Repositorio de manera local.
-- Verificar libertad de puertos 3000 y 7121 usados para la aplicación.
+- Verificar libertad de puertos 3000 y 7121 usados por la aplicación.
 
 #### Backend
 
 1. Dirigirse a `backend/` y abrir la solución en Visual Studio.
-2. Ubicar el archivo `appsettings.json` y cambiar la propiedad `DefaultConnection` con el usuario y password con la que instalo postgreSQL (verificar puerto y host).
-3. Abrir consola en VS 2022 `Herraminetas/Administrador de paquetes NuGet/Consola del administrador de paquetes`.
-4. Verificar que se este en la raiz del proyecto.
+2. Ubicar el archivo `appsettings.json` y cambiar la propiedad `DefaultConnection` con el usuario y password con la que instaló postgreSQL (verificar puerto y host).
+3. Abrir consola en VS 2022 `Herramientas/Administrador de paquetes NuGet/Consola del administrador de paquetes`.
+4. Verificar que se este en la raíz del proyecto.
 5. Ejecutar el comando `dotnet ef migrations add "database-technical01"` para crear la migración de la base de datos, si hubiese algún error verificar la instalación de DOTNET con el comando `dotnet ef --version`. Si no tiene DOTNET puede instalarlo bajo el siguiente comando `dotnet tool install --global dotnet-ef --version 8.0.1`
 6. Ejecutar el comando `dotnet ef database update` para crear la base de datos.
 7. Ejecutar la aplicación, se debe desplegar un swagger para verificar que funcione correctamente.
@@ -56,16 +56,16 @@ _Desarrollar una interfaz Front-End básica en Angular o React, para CSS utiliza
 
 ### Demo 💻
 
-Pagina principal de la aplicacion, se utilizo bootstrap para el diseño de la interfaz
+Pagina principal de la aplicación, se utilizó bootstrap para el diseño de la interfaz
 ![Cap1](assets/image1.png)
 
-Pantalla Students (/student) para visualizar los estudiantes activos en el sistema, en la cual se puede buscar por grado.
+Pantalla Students (/student) para visualizar los estudiantes activos en el sistema, en la cal se puede buscar por grado.
 ![Cap1](assets/image2.png)
 
 Se debe seleccionar el grado y buscar para visualizar los estudiantes asociados a este grado.
 ![Cap1](assets/image3.png)
 
-Resultado de busqueda de estudiantes por grado.
+Resultado de búsqueda de estudiantes por grado.
 ![Cap1](assets/image4.png)
 
 Para agregar un estudiante debemos irnos a la pantalla de Add Student (/add/student) y llenar los campos requeridos.
@@ -74,16 +74,16 @@ Para agregar un estudiante debemos irnos a la pantalla de Add Student (/add/stud
 El formulario esta debidamente validado para que se respenten la integridad de los datos.
 ![Cap1](assets/image6.png)
 
-O si se ingresa algun dato incorrecto se mostrara un mensaje de advertencia.
+O si se ingresa algún dato incorrecto se mostrará un mensaje de error.
 ![Cap1](assets/image7.png)
 
-Una vez que se ingrese un estudiante correctamente se mostrara un mensaje de confirmación.
+Una vez que se ingrese un estudiante correctamente se mostrará un mensaje de confirmación.
 ![Cap1](assets/image8.png)
 
 Podemos verificar que el estudiante se ha ingresado correctamente en la pantalla de Students.
 ![Cap1](assets/image9.png)
 
-Por ultimo se puede verificar que el estudiante se ha ingresado correctamente en la base de datos.
+Por último se puede verificar que el estudiante se ha ingresado correctamente en la base de datos.
 ![Cap1](assets/image10.png)
 
 ### Seguridad
@@ -120,13 +120,13 @@ En .NET se implemento un middleware para validar el token de autenticación, en 
 ```
 > En el appsettings.json se encuentra el AppKey que se debe enviar en el header de la petición.
 
-Para el frontend se inyecto en el .env el AppKey para poder realizar las peticiones al backend.
+Para el frontend se inyectó en el .env el AppKey para poder realizar las peticiones al backend.
 
 ```javascript
     REACT_APP_KEY=6473dbe0-e691-4a1d-ada9-af7bf12afc2c
 ```
 
-ademas se implemento un interceptor para enviar el token en el header de la petición.
+además se implemento un interceptor para enviar el token en el header de la petición.
 
 ```javascript
     //En el archivo studentService.js
@@ -146,10 +146,10 @@ ademas se implemento un interceptor para enviar el token en el header de la peti
 
 Con esto validamos que el usuario que este realizando la petición este autorizado para acceder a los recursos del backend.
 
-Ejemplo de Autorización No Valida
+Ejemplo de Autorización No Válida
 ![Cap1](assets/image11.png)
 
-Ejemplo de Autorización Valida
+Ejemplo de Autorización Válida
 ![Cap1](assets/image12.png)
 
 ### Contacto 📱
