@@ -34,13 +34,14 @@ namespace backend.Controllers
         {
             var student = await _context.Students.Where(x => x.Grade == grade).Select(x =>
             new StudentGetModel{
+                Id = x.Id,
                 Name = x.Name,
-                DateOfBirth = x.DateOfBirth.ToString("yyyy-MM-dd"),
+                DateOfBirth = x.DateOfBirth.ToString("dd-MM-yyyy"),
                 NameOfFather = x.NameOfFather,
                 NameOfMother = x.NameOfMother,
                 Grade = x.Grade,
                 Section = x.Section,
-                DateofStart = x.DateofStart.ToString("yyyy-MM-dd")
+                DateOfStart = x.DateofStart.ToString("dd-MM-yyyy")
             }).ToListAsync();
             if(student == null)
                 return NoContent();
@@ -55,7 +56,8 @@ namespace backend.Controllers
         [Route("api/get/grade")]
         public async Task<IActionResult> GetGrade()
         {
-            var grade = await _context.Students.Select(x => new GradeGetModel(x.Grade)).Distinct().ToListAsync();
+            var grade = await _context.Students.OrderBy(x => x.Grade).Select(x => new GradeGetModel(x.Grade))
+                .Distinct().ToListAsync();
 
             if(grade == null)
                 return NoContent();
