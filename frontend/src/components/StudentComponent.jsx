@@ -33,9 +33,7 @@ class StudentComponent extends React.Component {
 	uploadStudents = () => {
 		const grade = this.state.gradeSelected;
 
-		console.log(grade);
-
-		if (grade == 0 ) {
+		if (parseInt(grade, 10) === 0 ) {
 			Report.warning('Grade Not selected', 'Please select a grade');
 			return;
 		}
@@ -45,7 +43,6 @@ class StudentComponent extends React.Component {
 			this.setState({ students: response.data });
 			Loading.remove();
 		}).catch((error) => {
-			console.log(error);
 			Loading.remove();
 			Report.failure('Error', error.message);
 		});
@@ -54,7 +51,7 @@ class StudentComponent extends React.Component {
 	render() {
 		return (
 			<div>
-				<h2>Student Component</h2>
+				<h2>Students</h2>
 				<span className="mt-3 p-2">Gets students according to their grade level</span>
 
 				<div className="card mt-5 mb-3 p-3">
@@ -103,9 +100,6 @@ class StudentComponent extends React.Component {
 						</table>
 					</div>
 				</div>
-
-
-
 			</div>
 		);
 	}

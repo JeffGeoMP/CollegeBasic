@@ -7,7 +7,7 @@ function SwitchRoute() {
         <Routes>
             <Route path="/" element={<View.WelcomeView />}/>
             <Route path="/student" element={<View.StudentView />} />
-            <Route path="/add/student" element={<View.WelcomeView />} />
+            <Route path="/add/student" element={<View.AddStudentView />} />
             <Route path="*" element={<View.ErrorView />} />
         </Routes>
     );

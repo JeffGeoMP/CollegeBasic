@@ -1,12 +1,13 @@
 import React from "react";
+import Layout from "../template/Layout";
 
 class ErrorView extends React.Component {
     render() {
         return (
-            <div>
-                <h2>404</h2>
-                <p>Page not found</p>
-            </div>
+            <Layout>
+                <h1 className="display-3 mt-3 p-2">Oops.</h1>
+                <h1 className="display-5">Page Not Found</h1>
+            </Layout>
         );
     }
 }
