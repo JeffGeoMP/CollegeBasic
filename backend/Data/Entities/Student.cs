@@ -28,7 +28,7 @@ namespace backend.Data.Entities
         public string Section { get; set; }
 
         [Required]
-        public DateTime DateofStart { get; set; }
+        public DateTime DateOfStart { get; set; }
 
     }
 }

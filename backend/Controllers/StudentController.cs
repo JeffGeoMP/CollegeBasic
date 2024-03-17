@@ -41,7 +41,7 @@ namespace backend.Controllers
                 NameOfMother = x.NameOfMother,
                 Grade = x.Grade,
                 Section = x.Section,
-                DateOfStart = x.DateofStart.ToString("dd-MM-yyyy")
+                DateOfStart = x.DateOfStart.ToString("dd-MM-yyyy")
             }).ToListAsync();
             if(student == null)
                 return NoContent();
@@ -84,7 +84,7 @@ namespace backend.Controllers
                     NameOfMother = model.NameOfMother,
                     Grade = model.Grade,
                     Section = model.Section,
-                    DateofStart = model.DateofStart.ToUniversalTime()
+                    DateOfStart = model.DateOfStart.ToUniversalTime()
                 });
                 await _context.SaveChangesAsync();
                 return Ok();

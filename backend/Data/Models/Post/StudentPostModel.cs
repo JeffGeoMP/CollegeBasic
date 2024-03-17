@@ -14,7 +14,7 @@
 
         public string Section { get; set; }
 
-        public DateTime DateofStart { get; set; }
+        public DateTime DateOfStart { get; set; }
 
     }
 }
