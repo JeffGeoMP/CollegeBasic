@@ -47,7 +47,7 @@ class Layout extends React.Component {
 
   renderFooter() {
     return (
-      <div className="mt-5 p-5">
+      <div className="mt-5 p-5"  style={{backgroundColor: '#ded3d3'}}>
         <footer>
           <div className="container">
             <div className="row">

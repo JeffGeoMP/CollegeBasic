@@ -55,7 +55,8 @@ namespace backend.Controllers
         [Route("api/get/grade")]
         public async Task<IActionResult> GetGrade()
         {
-            var grade = await _context.Students.Select(x => x.Grade).Distinct().ToListAsync();
+            var grade = await _context.Students.Select(x => new GradeGetModel(x.Grade)).Distinct().ToListAsync();
+
             if(grade == null)
                 return NoContent();
             return Ok(grade);

@@ -1,20 +1,29 @@
 import axios from "axios";
-import enviroment from "../helpers/enviroment";
+import environment from "../helpers/environment";
 
 class StudentService {
 
-    getStudents = (grade) => {
-
-        console.log(`${enviroment.appKey}/Student/api/get/${grade}`)
-
+    getGrade = () => {
         return axios({
             method: "GET",
-            url: `${enviroment.servicesUrl}/Student/api/get/${grade}`,
+            url: `${environment.servicesUrl}Student/api/get/grade`,
             data: null,
             headers: {
                 "Content-Type": "application/json",
-                "Access-Control-Allow-Origin": "*",
-                "Authorization": `${enviroment.appKey}`
+                "Authorization": `${environment.appKey}`
+            },
+            timeout: 5000
+        });
+    }
+
+    getStudents = (grade) => {
+        return axios({
+            method: "GET",
+            url: `${environment.servicesUrl}Student/api/get/${grade}`,
+            data: null,
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `${environment.appKey}`
             },
             timeout: 5000
         });
@@ -23,12 +32,11 @@ class StudentService {
     addStudent = (student) => {
         return axios({
             method: "POST",
-            url: `${enviroment.servicesUrl}/Student/api/add`,
+            url: `${environment.servicesUrl}Student/api/add`,
             data: student,
             headers: {
                 "Content-Type": "application/json",
-                "Access-Control-Allow-Origin": "*",
-                "Authorization": `${enviroment.appKey}`
+                "Authorization": `${environment.appKey}`
             },
             timeout: 5000
         });
