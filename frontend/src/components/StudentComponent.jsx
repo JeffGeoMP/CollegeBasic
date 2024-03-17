@@ -22,7 +22,7 @@ class StudentComponent extends React.Component {
 			Loading.remove();
 		}).catch((error) => {
 			Loading.remove();
-			Report.failure('Error', error);
+			Report.failure('Error', error.message);
 		});
 	}
 
@@ -36,7 +36,7 @@ class StudentComponent extends React.Component {
 		console.log(grade);
 
 		if (grade == 0 ) {
-			Report.failure('Error', 'Please select a grade');
+			Report.warning('Grade Not selected', 'Please select a grade');
 			return;
 		}
 
@@ -63,7 +63,7 @@ class StudentComponent extends React.Component {
 							<div className="col-md-4 offset-md-4">
 								<div className="input-group">
 									<select className="form-select" id="inputSelected" onChange={this.handleChangeSelectGrade}>
-										<option defaultValue>Choose grade...</option>
+										<option defaultValue value={0}>Choose grade...</option>
 										{this.state.grades.map(grade =>
 											<option key={grade.grade} value={grade.grade}>{grade.grade}° - {grade.gradeName}</option>
 										)}
@@ -74,7 +74,7 @@ class StudentComponent extends React.Component {
 						</div>
 					</div>
 					<div className="card-body p-2 mt-2">
-						<table className="table">
+						<table className="table table-hover">
 							<thead>
 								<tr>
 									<th scope="col">Name</th>
@@ -89,7 +89,7 @@ class StudentComponent extends React.Component {
 							<tbody>
 								{this.state.students.map(student =>
 									<tr key={student.id}>
-										<td>{student.name}</td>
+										<td title={student.name}>{student.name}</td>
 										<td>{student.dateOfBirth}</td>
 										<td>{student.nameOfFather}</td>
 										<td>{student.nameOfMother}</td>
