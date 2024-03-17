@@ -67,7 +67,7 @@ class AddStudentComponent extends React.Component {
                 <span className="mt-3 p-2">Add students according to required data </span>
                 <div className="card mt-5 mb-3 p-3">
                     <div className="card-body p-2 mt-2">
-                        <div className="col-md-4 offset-4">
+                        <div className="col-md-4 offset-md-4">
                             <form className="form-floating needs-validation" onSubmit={this.handleSubmitForm}>
                                 <div className="form-floating mb-3">
                                     <input type="text" className="form-control" id="input-name-student" required/>

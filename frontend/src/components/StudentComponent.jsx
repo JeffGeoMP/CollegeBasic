@@ -33,7 +33,7 @@ class StudentComponent extends React.Component {
 	uploadStudents = () => {
 		const grade = this.state.gradeSelected;
 
-		if (parseInt(grade, 10) === 0 ) {
+		if (parseInt(grade, 10) === 0) {
 			Report.warning('Grade Not selected', 'Please select a grade');
 			return;
 		}
@@ -71,33 +71,35 @@ class StudentComponent extends React.Component {
 						</div>
 					</div>
 					<div className="card-body p-2 mt-2">
-						<table className="table table-hover">
-							<thead>
-								<tr>
-									<th scope="col">Name</th>
-									<th scope="col">Birth</th>
-									<th scope="col">Father Name</th>
-									<th scope="col">Mother Name</th>
-									<th scope="col">Grade</th>
-									<th scope="col">Section</th>
-									<th scope="col">Start Date</th>
-								</tr>
-							</thead>
-							<tbody>
-								{this.state.students.map(student =>
-									<tr key={student.id}>
-										<td title={student.name}>{student.name}</td>
-										<td>{student.dateOfBirth}</td>
-										<td>{student.nameOfFather}</td>
-										<td>{student.nameOfMother}</td>
-										<td>{student.grade}°</td>
-										<td>{student.section}</td>
-										<td>{student.dateOfStart}</td>
+						<div className="table-responsive">
+							<table className="table table-hover">
+								<thead>
+									<tr>
+										<th scope="col">Name</th>
+										<th scope="col">Birth</th>
+										<th scope="col">Father Name</th>
+										<th scope="col">Mother Name</th>
+										<th scope="col">Grade</th>
+										<th scope="col">Section</th>
+										<th scope="col">Start Date</th>
 									</tr>
-								)}
-								{this.state.students.length === 0 && <tr><td colSpan="7" className="text-center">No data found </td></tr>}
-							</tbody>
-						</table>
+								</thead>
+								<tbody>
+									{this.state.students.map(student =>
+										<tr key={student.id}>
+											<td title={student.name}>{student.name}</td>
+											<td>{student.dateOfBirth}</td>
+											<td>{student.nameOfFather}</td>
+											<td>{student.nameOfMother}</td>
+											<td>{student.grade}°</td>
+											<td>{student.section}</td>
+											<td>{student.dateOfStart}</td>
+										</tr>
+									)}
+									{this.state.students.length === 0 && <tr><td colSpan="7" className="text-center">No data found </td></tr>}
+								</tbody>
+							</table>
+						</div>
 					</div>
 				</div>
 			</div>
